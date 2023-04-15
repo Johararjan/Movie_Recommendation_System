@@ -115,10 +115,11 @@ def recommendations():
     # Get recommended movies and their ratings
     recommended_movies = movies[movies.index.isin(recommended_movie_indices)]['title'].tolist()
     recommended_ratings = ratings_matrix[:, recommended_movie_indices].mean(axis=0).tolist()
-    recommended_movies_with_ratings = zip(recommended_movies, recommended_ratings)
+    recommended_movies_with_ratings = []
+    for i in range(len(recommended_movies)):
+        recommended_movies_with_ratings.append((recommended_movies[i], f"{recommended_ratings[i]:.1f}"))
 
     return render_template('Recommendalone.html', movie=movie_title, recommended_movies=recommended_movies_with_ratings)
-
 @app.route('/recommendation', methods=['POST'])
 def recommendation():
     # Get genre preferences from the form
