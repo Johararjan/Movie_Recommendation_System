@@ -21,17 +21,17 @@
     <h1>Movie Recommendations</h1>
     <p>Based on your preferred genres "{{ genre1 }}" and "{{ genre2 }}", here are our top recommendations:</p>
     <div class="result-container">
-      {% for movie in recommendations %}
-<div class="result-card">
-  <h3>{{ movie }}</h3>
-  <p class="recommend-p">Similarity score: {{ loop.index }}</p>
-</div>
-{% endfor %}
+      {% for movie, rating in recommendations %}
+        <div class="result-card">
+          <h3>{{ movie }}</h3>
+          <p class="recommend-p">Similarity score: {{ loop.index }}</p>
+          <p class="recommend-p">Rating: {{ rating }}</p>
+        </div>
+      {% endfor %}
     </div>
-   <footer>
-    <p>&copy; 2023 Movie Recommendation System</p>
-     <p> Made by Arjan Singh Johar || Sumit Mante || Abhishek Ingle</p>
+    <footer>
+      <p>&copy; 2023 Movie Recommendation System</p>
+      <p>Made by Arjan Singh Johar || Sumit Mante || Abhishek Ingle</p>
     </footer>
-  </body>
   </body>
 </html>
